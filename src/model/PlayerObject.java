@@ -1,11 +1,11 @@
 package model;
 
 public class PlayerObject {
-	
+
 	private String name;
 	private int playerNo;
 	private PlayerMarker marker;
-	
+
 	public PlayerObject(String name, int playerNo, PlayerMarker marker){
 		
 		this.marker = marker;
@@ -37,12 +37,11 @@ public class PlayerObject {
 	public void setMarker(PlayerMarker marker) {
 		this.marker = marker;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		String mark = marker.toString();
-		
+
 		return mark;
 	}
-	
 
 }

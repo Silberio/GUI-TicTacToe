@@ -2,34 +2,37 @@ package view;
 
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class MainFrame extends JFrame {
 	
 	private int row;
 	private int col;
+	private String turn = " ";
+	private JPanel gamePanel;
 	
 	public MainFrame(){
 		
 	}
 	
 	public void MainFrameInit(int row, int col){
-		this.row=row;
-		this.col=col;
-		
-		setTitle("Three in row");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(600,600);
-		setLocation(500, 200);
-		setVisible(true);
-		setResizable(false);
-		setLayout(new GridLayout(row,col));
-	}
+		this.setTitle("-| Three in row |-| " + turn + " |-");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(650,650);
+		this.setVisible(true);
+		this.setResizable(false);
+		this.setLayout(new GridLayout(row,col));
+		this.setLocationRelativeTo(null);
+	}	
 	
-	public void addSpace(JButton c){
-				add(c);	
+	
+	public String getTurn() {
+		return turn;
+	}
 
+	public void setTurn(String turn) {
+		this.turn = turn;
 	}
 
 	public int getrow() {
@@ -48,6 +51,8 @@ public class MainFrame extends JFrame {
 		this.col = col;
 	}
 	
-	
+	public void closeWindow() {
+		this.dispose();
+	}
 
 }

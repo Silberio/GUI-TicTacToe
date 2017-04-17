@@ -1,45 +1,39 @@
 package model;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 
-public class BoardSpace extends JButton implements MouseListener{
-
-	public BoardSpace(){
-		setText("SPACE");
-		
-	}
+public class BoardSpace extends JButton{
 	
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	private int row, col;
+	
+	public BoardSpace(String text) {
+		setFont(new Font("Arial", Font.PLAIN, 120));
+		setBackground(Color.DARK_GRAY);
+		setText(text);
 	}
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public int getRow() {
+		return row;
 	}
 
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void setRow(int row) {
+		this.row = row;
 	}
 
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public int getCol() {
+		return col;
 	}
 
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void setCol(int col) {
+		this.col = col;
 	}
+
 
 }

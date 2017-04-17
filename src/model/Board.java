@@ -1,32 +1,20 @@
 package model;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Board {
-
-	private static int row = 3;
-	private static int col = 3;
-
-	private String playerName;
-	private int playerNumber;
-	private char playerChar;
-
-	private static PlayerObject player = new PlayerObject("tom", 2, PlayerMarker.O);
-	private static PlayerObject[][] playerBoard = new PlayerObject[row][col];
-
-	private static Board board = new Board();
-
-	private Board() {
+	private static int row, col;
+	private static ArrayList[][] board = new ArrayList[row][col];
+	
+	public Board() {
 		
 	}
-
-	public static Board getInstance() {
-
+	public void setInternalBoardSize(int row, int col) {
+		this.row = row;
+		this.col = col;
+	}
+	
+	public static ArrayList[][] getInstance() {
 		return board;
 	}
-	public PlayerObject[][] getBoard(){
-		
-		return playerBoard;
-	}
-
 }

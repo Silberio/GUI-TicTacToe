@@ -1,11 +1,15 @@
 package view;
 
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 
 public class WelcomeScreen {
 
@@ -15,67 +19,93 @@ public class WelcomeScreen {
 
 	// for windows created in this class
 	private JFrame frame = new JFrame("Select board size");
-	private JPanel panel = new JPanel();
-	private JButton btn;
-
+	private JPanel panel = new JPanel(new BorderLayout());
+	private JButton buttons[] = new JButton[3];
+	
 	public WelcomeScreen() {
 
 	}
 
+	/*
+	 * WINDOWS PERTINENT TO BORD SIZE
+	 */
 	public void inputBoardSize() {
-		frame.setSize(265, 300);
-		frame.setLocation(50, 50);
+		initWelcomeButtons();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.add(panel);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+	}
+	
+	
+	
+public JButton[] getButtons() {
+		return buttons;
+	}
+
+public void setButtons(JButton[] buttons) {
+		this.buttons = buttons;
+	}
+
+	//	adds  buttons with board size options at startup
+	// called in function inputBoardSize()
+	public void initWelcomeButtons(){
+		JPanel textPanel = new JPanel();
+		JPanel btnPanel = new JPanel();
+
+
+		textPanel.add(new JLabel("Choose board size: "));
 		
-		panel.setLayout(new GridLayout());
-		for (int i = 3; i < 3; i++) {
-			panel.add(btn);
+		for(int i = 0; i < buttons.length; i++) {
+			String btnText = "null";			
+			JButton btn = new JButton(btnText);
+			btn.setText(setSizeButtonText(i));
+			buttons[i] = btn;
+			btnPanel.add(buttons[i]);
 		}
-
+		
+		panel.add(textPanel, BorderLayout.NORTH);	
+		panel.add(btnPanel, BorderLayout.SOUTH);
+		
 	}
 
-	public void questionWindow() {
-		input = JOptionPane.showInputDialog("Player name?");
-	}
 
-	public void messageWindow() {
-		JOptionPane.showMessageDialog(null, message);
-	}
-
-	// Predefined messages depending on game condition
-	public String gameMessages(int condition) {
-		switch (condition) {
-		// test message
+	//sets label for the JButton size selection
+	public String setSizeButtonText(int i){
+		String btnText = "null";
+		
+		switch(i){
+		case 0:
+			btnText = "3x3 Board";
+			break;
 		case 1:
-			message = "thank you " + input;
+			btnText = "4x4 Board";
 			break;
 		case 2:
-			message = "second message";
+			btnText = "5x5 Board";
 			break;
 		default:
-			message = "lolwat";
+			btnText = "NOT FOUND";
 			break;
 		}
-
-		return message;
+		return btnText;
+	}
+	
+/*
+ * 	WINDOWS PERTINENT TO PLAYER INITIALIZATION
+ */
+	
+	// input window that takes player name
+	// when called, returns player name.
+	public String playerNameWindows() {
+		String input = JOptionPane.showInputDialog("Player name?");
+		return input; 
 	}
 
-	public String getMessage() {
-		return message;
+	public void closeWindow() {
+		frame.dispose();
 	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String getInput() {
-		return input;
-	}
-
-	public void setInput(String input) {
-		this.input = input;
-	}
-
 }
+
