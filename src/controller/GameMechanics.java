@@ -153,8 +153,7 @@ public class GameMechanics {
 		}
 		
 		//win algorithms from https://stackoverflow.com/questions/1056316/algorithm-for-determining-tic-tac-toe-game-over
-		// variables are adapted. couldn't find any efficient way of doing it on my own
-		//I do understand it in its entirety though 
+		// variables are adapted. couldn't find any more efficient way of doing it on my own
 		winner = "0";
 		
 		// check col
